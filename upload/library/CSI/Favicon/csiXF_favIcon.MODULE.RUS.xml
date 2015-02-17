@@ -4,7 +4,7 @@
   Contacts: http://cyberspace.industries/
   License: LICENSE.ENG.txt
 -->
-<addon addon_id="csiXF_favIcon" title="(CSI/XF/MODULE) Favicon" version_string="1.0.0" version_id="1" url="http://cyberspace.industries/" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+<addon addon_id="csiXF_favIcon" title="(CSI/XF/MODULE) Favicon" version_string="1.0.1" version_id="2" url="http://cyberspace.industries/" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
   <admin_navigation/>
   <admin_permissions/>
   <admin_style_properties/>
@@ -33,7 +33,7 @@
   <phrases>
     <phrase title="option_csiXF_favIcon_addCode" version_id="1" version_string="1.0.0"><![CDATA[HTML-разметка]]></phrase>
     <phrase title="option_csiXF_favIcon_addCode_explain" version_id="1" version_string="1.0.0"><![CDATA[Введите HTML-разметку, подключающую "favicon.ico".]]></phrase>
-    <phrase title="option_group_csiXF_favIcon" version_id="1" version_string="1.0.0"><![CDATA[(CSI/XF) Favicon]]></phrase>
+    <phrase title="option_group_csiXF_favIcon" version_id="2" version_string="1.0.1"><![CDATA[(CSI/XF/MODULE) Favicon]]></phrase>
     <phrase title="option_group_csiXF_favIcon_description" version_id="1" version_string="1.0.0"><![CDATA[Добавление значка веб-сайта или веб-страницы.<br/>
 Значок отображается браузером во вкладке перед названием страницы, а также в качестве картинки рядом с закладкой, во вкладках и в других элементах интерфейса.]]></phrase>
   </phrases>
