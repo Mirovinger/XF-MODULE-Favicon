@@ -4,7 +4,7 @@
   Contacts: http://cyberspace.industries/
   License: LICENSE.ENG.txt / LICENSE.RUS.txt
 -->
-<addon addon_id="csiXF_favIcon" title="(CSI/XF/MODULE) Favicon" version_string="1.0.1" version_id="2" url="http://cyberspace.industries/" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+<addon addon_id="csiXF_favIcon" title="(CSI/XF/MODULE) Иконка &quot;favicon&quot;" version_string="1.0.2" version_id="3" url="http://cyberspace.industries/" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
   <admin_navigation/>
   <admin_permissions/>
   <admin_style_properties/>
@@ -17,10 +17,9 @@
   <email_template_modifications/>
   <optiongroups>
     <group group_id="csiXF_favIcon" display_order="99999999" debug_only="0"/>
-    <option option_id="csiXF_favIcon_addCode" edit_format="textbox" data_type="string" can_backup="1">
-      <default_value><![CDATA[<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />]]></default_value>
-      <edit_format_params>rows=10</edit_format_params>
+    <option option_id="csiXF_favIcon_iconPath" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value>1</default_value>
+      <edit_format_params></edit_format_params>
       <sub_options></sub_options>
       <relation group_id="csiXF_favIcon" display_order="1"/>
     </option>
@@ -31,20 +30,26 @@
     <interface_groups/>
   </permissions>
   <phrases>
-    <phrase title="option_csiXF_favIcon_addCode" version_id="1" version_string="1.0.0"><![CDATA[HTML-разметка]]></phrase>
-    <phrase title="option_csiXF_favIcon_addCode_explain" version_id="1" version_string="1.0.0"><![CDATA[Введите HTML-разметку, подключающую "favicon.ico".]]></phrase>
-    <phrase title="option_group_csiXF_favIcon" version_id="2" version_string="1.0.1"><![CDATA[(CSI/XF/MODULE) Favicon]]></phrase>
+    <phrase title="option_csiXF_favIcon_iconPath" version_id="3" version_string="1.0.2"><![CDATA[Общая иконка]]></phrase>
+    <phrase title="option_csiXF_favIcon_iconPath_explain" version_id="3" version_string="1.0.2"><![CDATA[Общая иконка будет отображаться одинаковой для любого из выбранных стилей. Снимите галочку, если хотите отображать индивидуальную иконку для каждого из стилей.]]></phrase>
+    <phrase title="option_group_csiXF_favIcon" version_id="2" version_string="1.0.1"><![CDATA[(CSI/XF/MODULE) Иконка "favicon"]]></phrase>
     <phrase title="option_group_csiXF_favIcon_description" version_id="1" version_string="1.0.0"><![CDATA[Добавление значка веб-сайта или веб-страницы.<br/>
 Значок отображается браузером во вкладке перед названием страницы, а также в качестве картинки рядом с закладкой, во вкладках и в других элементах интерфейса.]]></phrase>
   </phrases>
   <route_prefixes/>
   <style_properties/>
   <templates>
-    <template title="csiXF_favIcon" version_id="1" version_string="1.0.0"><![CDATA[{xen:raw $xenOptions.csiXF_favIcon_addCode}]]></template>
+    <template title="csiXF_favIcon" version_id="3" version_string="1.0.2"><![CDATA[<xen:if is="{$xenOptions.csiXF_favIcon_iconPath}">
+  <link rel="icon" href="{$xenOptions.boardUrl}/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="{$xenOptions.boardUrl}/favicon.ico" type="image/x-icon" />
+<xen:else />
+  <link rel="icon" href="{$xenOptions.boardUrl}/{xen:property imagePath}/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="{$xenOptions.boardUrl}/{xen:property imagePath}/favicon.ico" type="image/x-icon" />
+</xen:if>]]></template>
   </templates>
   <public_template_modifications>
-    <modification template="PAGE_CONTAINER" modification_key="csiXF_favIcon" description="Добавление &quot;favicon.ico&quot;" execution_order="10" enabled="1" action="str_replace">
-      <find><![CDATA[<link rel="apple-touch-icon" href="{xen:helper fullurl, {xen:property ogLogoPath}, 1}" />]]></find>
+    <modification template="PAGE_CONTAINER" modification_key="csiXF_favIcon" description="Добавление &quot;favicon.ico&quot;" execution_order="1" enabled="1" action="str_replace">
+      <find><![CDATA[</head>]]></find>
       <replace><![CDATA[<xen:include template="csiXF_favIcon" />
 $0]]></replace>
     </modification>
