@@ -4,7 +4,7 @@
   Contacts: http://cyberspace.industries/
   License: LICENSE.ENG.txt / LICENSE.RUS.txt
 -->
-<addon addon_id="csiXF_favIcon" title="(CSI/XF/MODULE) Иконка &quot;favicon&quot;" version_string="1.0.2" version_id="3" url="http://cyberspace.industries/" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+<addon addon_id="csiXF_favIcon" title="(CSI/XF/MODULE) Иконка &quot;favicon&quot;" version_string="1.0.3" version_id="4" url="http://cyberspace.industries/" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
   <admin_navigation/>
   <admin_permissions/>
   <admin_style_properties/>
@@ -23,6 +23,14 @@
       <sub_options></sub_options>
       <relation group_id="csiXF_favIcon" display_order="1"/>
     </option>
+    <option option_id="csiXF_favIcon_iconType" edit_format="select" data_type="string" can_backup="1">
+      <default_value>xicon</default_value>
+      <edit_format_params>xicon={xen:phrase csiXF_favIcon_ico}
+png={xen:phrase csiXF_favIcon_png}
+gif={xen:phrase csiXF_favIcon_gif}</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="csiXF_favIcon" display_order="2"/>
+    </option>
   </optiongroups>
   <permissions>
     <permission_groups/>
@@ -30,8 +38,13 @@
     <interface_groups/>
   </permissions>
   <phrases>
+    <phrase title="csiXF_favIcon_ico" version_id="4" version_string="1.0.3"><![CDATA[ICO]]></phrase>
+    <phrase title="csiXF_favIcon_png" version_id="4" version_string="1.0.3"><![CDATA[PNG]]></phrase>
+    <phrase title="csiXF_favIcon_gif" version_id="4" version_string="1.0.3"><![CDATA[GIF]]></phrase>
     <phrase title="option_csiXF_favIcon_iconPath" version_id="3" version_string="1.0.2"><![CDATA[Общая иконка]]></phrase>
     <phrase title="option_csiXF_favIcon_iconPath_explain" version_id="3" version_string="1.0.2"><![CDATA[Общая иконка будет отображаться одинаковой для любого из выбранных стилей. Снимите галочку, если хотите отображать индивидуальную иконку для каждого из стилей.]]></phrase>
+    <phrase title="option_csiXF_favIcon_iconType" version_id="4" version_string="1.0.3"><![CDATA[Тип иконки]]></phrase>
+    <phrase title="option_csiXF_favIcon_iconType_explain" version_id="4" version_string="1.0.3"><![CDATA[Выберите тип иконки. От типа иконки зависит расширение файла "favicon" и атрибут "type".]]></phrase>
     <phrase title="option_group_csiXF_favIcon" version_id="2" version_string="1.0.1"><![CDATA[(CSI/XF/MODULE) Иконка "favicon"]]></phrase>
     <phrase title="option_group_csiXF_favIcon_description" version_id="1" version_string="1.0.0"><![CDATA[Добавление значка веб-сайта или веб-страницы.<br/>
 Значок отображается браузером во вкладке перед названием страницы, а также в качестве картинки рядом с закладкой, во вкладках и в других элементах интерфейса.]]></phrase>
@@ -39,12 +52,23 @@
   <route_prefixes/>
   <style_properties/>
   <templates>
-    <template title="csiXF_favIcon" version_id="3" version_string="1.0.2"><![CDATA[<xen:if is="{$xenOptions.csiXF_favIcon_iconPath}">
-  <link rel="icon" href="{$xenOptions.boardUrl}/favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" href="{$xenOptions.boardUrl}/favicon.ico" type="image/x-icon" />
+    <template title="csiXF_favIcon" version_id="4" version_string="1.0.3"><![CDATA[<xen:if is="{$xenOptions.csiXF_favIcon_iconType} == 'xicon'">
+  <xen:set var="$favIconExt">ico</xen:set>
+  <xen:set var="$favIconType">x-icon</xen:set>
+<xen:elseif is="{$xenOptions.csiXF_favIcon_iconType} == 'png'" />
+  <xen:set var="$favIconExt">png</xen:set>
+  <xen:set var="$favIconType">png</xen:set>
+<xen:elseif is="{$xenOptions.csiXF_favIcon_iconType} == 'gif'" />
+  <xen:set var="$favIconExt">gif</xen:set>
+  <xen:set var="$favIconType">gif</xen:set>
+</xen:if>
+
+<xen:if is="{$xenOptions.csiXF_favIcon_iconPath}">
+  <link rel="icon" href="{$xenOptions.boardUrl}/favicon.{$favIconExt}" type="image/{$favIconType}" />
+  <link rel="shortcut icon" href="{$xenOptions.boardUrl}/favicon.{$favIconExt}" type="image/{$favIconType}" />
 <xen:else />
-  <link rel="icon" href="{$xenOptions.boardUrl}/{xen:property imagePath}/favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" href="{$xenOptions.boardUrl}/{xen:property imagePath}/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="{$xenOptions.boardUrl}/{xen:property imagePath}/favicon.{$favIconExt}" type="image/{$favIconType}" />
+  <link rel="shortcut icon" href="{$xenOptions.boardUrl}/{xen:property imagePath}/favicon.{$favIconExt}" type="image/{$favIconType}" />
 </xen:if>]]></template>
   </templates>
   <public_template_modifications>
