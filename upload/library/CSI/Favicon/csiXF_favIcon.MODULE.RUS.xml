@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  Copyright © 2015 CYBERSPACE Industries
-  Contacts: http://cyberspace.industries/
-  License: LICENSE.ENG.txt / LICENSE.RUS.txt
--->
 <addon addon_id="csiXF_favIcon" title="(CSI/XF/MODULE) Иконка &quot;favicon&quot;" version_string="1.0.3" version_id="4" url="http://cyberspace.industries/" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
   <admin_navigation/>
   <admin_permissions/>
@@ -38,9 +33,9 @@ gif={xen:phrase csiXF_favIcon_gif}</edit_format_params>
     <interface_groups/>
   </permissions>
   <phrases>
+    <phrase title="csiXF_favIcon_gif" version_id="4" version_string="1.0.3"><![CDATA[GIF]]></phrase>
     <phrase title="csiXF_favIcon_ico" version_id="4" version_string="1.0.3"><![CDATA[ICO]]></phrase>
     <phrase title="csiXF_favIcon_png" version_id="4" version_string="1.0.3"><![CDATA[PNG]]></phrase>
-    <phrase title="csiXF_favIcon_gif" version_id="4" version_string="1.0.3"><![CDATA[GIF]]></phrase>
     <phrase title="option_csiXF_favIcon_iconPath" version_id="3" version_string="1.0.2"><![CDATA[Общая иконка]]></phrase>
     <phrase title="option_csiXF_favIcon_iconPath_explain" version_id="3" version_string="1.0.2"><![CDATA[Общая иконка будет отображаться одинаковой для любого из выбранных стилей. Снимите галочку, если хотите отображать индивидуальную иконку для каждого из стилей.]]></phrase>
     <phrase title="option_csiXF_favIcon_iconType" version_id="4" version_string="1.0.3"><![CDATA[Тип иконки]]></phrase>
